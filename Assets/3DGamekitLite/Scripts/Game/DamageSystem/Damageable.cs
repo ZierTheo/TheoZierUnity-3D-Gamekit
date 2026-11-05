@@ -70,11 +70,26 @@ namespace Gamekit3D
             OnResetDamage.Invoke();
         }
 
+        public void GainSetHealth(int hP)
+        {
+            currentHitPoints += hP;
+            
+            //Gör så vi inte så mycket hP som helst
+            if (currentHitPoints > maxHitPoints)
+            {
+                currentHitPoints = maxHitPoints;
+            }
+            isInvulnerable = false;
+            m_timeSinceLastHit = 0.0f;
+            OnResetDamage.Invoke();
+            
+        }
+
         public void SetColliderState(bool enabled)
         {
             m_Collider.enabled = enabled;
         }
-
+            //tar emot data ifrån Hunger M för att sätta currentHitpoint amount
         public void ApplyDamage(DamageMessage data)
         {
             if (currentHitPoints <= 0)
