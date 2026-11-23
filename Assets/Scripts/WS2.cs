@@ -1,5 +1,7 @@
 using System;
 using UnityEngine;
+using FMODUnity;
+using FMOD.Studio;
 
 public enum ElementalPower
 {
@@ -28,16 +30,29 @@ public class WS2 : MonoBehaviour
 {
     public ElementalPower elementSignal;
     public CharacterInformation characterInformation;
+    // En variablen av en struct
 
+    public EventReference eventRef;
+    public EventInstance eventInstance;
+    
+    
     public int[] highScores;
 
-//Check Enum
+
     private void Start()
     {
-        if (elementSignal == ElementalPower.Air)
-        {
-            Debug.Log(elementSignal);
-        }
+        eventInstance = RuntimeManager.CreateInstance(eventRef);
+        //eventInstance.start();
+        
+        eventInstance.getPlaybackState(out PLAYBACK_STATE state);
+        Debug.Log(state);
+        
+        //PLAYBACK_STATE.STOPPED;
+        
+        
+       
+                
+        
         
         
         if (characterInformation.canFly == true)
@@ -48,6 +63,11 @@ public class WS2 : MonoBehaviour
         if (highScores[0] > highScores[1])
         {
             Debug.Log(highScores[0]);
+        }
+
+        foreach (int score in highScores)
+        {
+            Debug.Log(score);
         }
         
     }

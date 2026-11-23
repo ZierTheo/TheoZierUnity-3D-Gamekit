@@ -415,7 +415,9 @@ MonoBehaviour:
   Plugins: []
   MasterBanks:
   - Master
-  Banks: []
+  Banks:
+  - Musik
+  - Stingers
   BanksToLoad: []
   LiveUpdatePort: 9264
   EnableMemoryTracking: 0
