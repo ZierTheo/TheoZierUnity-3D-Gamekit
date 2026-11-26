@@ -15,7 +15,7 @@ public class InteractableAudio : ScriptableObject
         RuntimeManager.PlayOneShot(Scene1Event);
         
     }
-    else
+    
     public void StopScene1Event()
     {
         RuntimeManager.PlayOneShot(Scene1Event);
